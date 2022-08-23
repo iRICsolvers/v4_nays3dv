@@ -10,7 +10,7 @@
 ! **************************************
        integer::fid, ier
        call cg_iric_write_sol_start(fid, ier)
-       call CG_IRIC_WRITE_SOL_TIME(time, ier)
+       call CG_IRIC_WRITE_SOL_TIME(fid, time, ier)
        call cg_iric_write_sol_baseiterative_real(fid, "Input Discharge",qp0,IER)
        call cg_iric_write_sol_baseiterative_real(fid, "Downstream Stage",h_dw,IER)
        call cg_iric_write_sol_baseiterative_real(fid, "Upstream Stage",h_up,IER)
