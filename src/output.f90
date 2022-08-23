@@ -70,7 +70,7 @@
 !      write(44,*) 'h(nx)'
 !      write(44,'(20f8.5)')(h(nx,j),j=0,ny+1)
 !      end if
-
+       call cg_iric_write_sol_end(fid,ier)
        end subroutine output
       end module output_m
      
