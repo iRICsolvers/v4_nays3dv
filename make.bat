@@ -12,7 +12,6 @@ ifort .\src\ss_nu.f90  /Qopenmp /nostandard-realloc-lhs /MD /c
 ifort .\src\cell2node.f90  /Qopenmp /nostandard-realloc-lhs /MD /c
 ifort .\src\cip3d.f90  /Qopenmp /nostandard-realloc-lhs /MD /c
 ifort .\src\diffusion.f90  /Qopenmp /nostandard-realloc-lhs /MD /c
-ifort .\src\initial.f90  /Qopenmp /nostandard-realloc-lhs /MD /c
 ifort .\src\newgrd.f90  /Qopenmp /nostandard-realloc-lhs /MD /c
 ifort .\src\non_advection.f90  /Qopenmp /nostandard-realloc-lhs /MD /c
 ifort .\src\o3upwind.f90  /Qopenmp /nostandard-realloc-lhs /MD /c
