@@ -1,5 +1,6 @@
 !*******************************
       subroutine omgpsi
+      use common_hyd
 !*******************************
 !
       real(8)::deds,dhsds
