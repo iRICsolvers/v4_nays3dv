@@ -709,9 +709,10 @@
       !--------------------------------------------------
       !Šù‘¶‚Ì"stop"‚ğ‚±‚ÌŠÖ”‚É’u‚«Š·‚¦‚Ä‚ ‚°‚é
       !--------------------------------------------------
-      subroutine calc_stop()
+      subroutine calc_stop(fid)
           use common_hh
-          integer :: ier
-          call cg_close_f(fid,ier)
+          use iric
+          integer :: fid,ier
+          call cg_iric_close(fid,ier)
           stop
       end subroutine
