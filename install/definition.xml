@@ -5,7 +5,7 @@
 	caption="nays3dv 3D Density Flow Solver" 
 	version="1.7.22082401"
 	copyright="Yasuyuki SHIMIZU"
-	release="2022.8.24"
+	release="2022.8.31"
 	homepage="http://i-ric.org"
 	executable="nays3dv.exe"
 	iterationtype="time"
