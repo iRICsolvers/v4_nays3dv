@@ -7,10 +7,14 @@ Nays3Dvは自由水面を持つ3次元流れ場とその中の密度変化を伴
 河川河口付近の塩水遡上、ダム湖内の温度・密度流循環などに使用可能である。
 また、密度流の特性を3次元的にヴィジュアルに表現出来るので、教育用ツールとしても良いかも知れない。
 
+事例集はこちらを参照ください。
+https://i-ric.org/yasu/Nays3dv_JP/index.html
+
 ## リリースノート
+### ver.1.7.23021302
+* READMEに事例集のリンクを追加。
 ### ver.1.7.23021301
 * ライセンスの情報を修正
-
 ### ver.1.7.22101301
 * iRIC v4版をリリース
 
@@ -21,7 +25,12 @@ Nays3Dv is 3Dimensional model developed for calculation of vertical and horizont
 The Nays3Dv solver is developed by Professor Yasuyuki Shimizu from Hokkaido University.
 Density currents occured due to density differences, arise from temperature variations, suspended solids or dissolved materials. Therefore, formation and evolution of density currents are induced by natural conditions such as saline intrusions, oil spills etc. Density flow is important for problems in lakes, reservoirs and estuaries.
 
+Check here for case studies.
+https://i-ric.org/yasu/Nays3dv/index.html
+
 ## Release notes
+### ver.1.7.23021302
+* Add case study link to README.
 ### ver.1.7.23021301
 * Fix license information
 ### ver.1.7.22101301
