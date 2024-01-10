@@ -177,7 +177,7 @@ contains
         y(i, j) = y8(i + 1, j + 1)
         z(i, j) = z8(i + 1, j + 1)
         h_node(i, j) = h8(i + 1, j + 1)
-        if (j_mindep == 1 .and. (z(i, j) .gt. h_node(i, j) - dep_min)) then
+        if (j_mindep == 1 .and. (z(i, j) > h_node(i, j) - dep_min)) then
           z(i, j) = h_node(i, j) - dep_min
           z8(i + 1, j + 1) = z(i, j)
         end if
@@ -489,22 +489,22 @@ contains
 
     do i = 1, nx
       do j = 1, ny
-        if (i .eq. nx) then
+        if (i == nx) then
           a_n0(i, j) = 0.
         else
           a_n0(i, j) = 1./(dxi(i, j)*(dxi(i, j) + dxi(i - 1, j)))
         end if
-        if (i .eq. 1) then
+        if (i == 1) then
           a_s0(i, j) = 0.
         else
           a_s0(i, j) = 1./(dxi(i - 1, j)*(dxi(i, j) + dxi(i - 1, j)))
         end if
-        if (j .eq. ny) then
+        if (j == ny) then
           a_w0(i, j) = 0.
         else
           a_w0(i, j) = 1./(dyj(i, j)*(dyj(i, j) + dyj(i, j - 1)))
         end if
-        if (j .eq. 1) then
+        if (j == 1) then
           a_e0(i, j) = 0.
         else
           a_e0(i, j) = 1./(dyj(i, j - 1)*(dyj(i, j) + dyj(i, j - 1)))
@@ -513,12 +513,12 @@ contains
     end do
 
     do k = 1, nz
-      if (k .eq. 1) then
+      if (k == 1) then
         a_d0(k) = 0.
       else
         a_d0(k) = 1./dz(k)**2
       end if
-      if (k .eq. nz) then
+      if (k == nz) then
         a_u0(k) = 0.
       else
         a_u0(k) = 1./dz(k)**2
