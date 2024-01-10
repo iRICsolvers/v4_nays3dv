@@ -2,7 +2,7 @@ module common_hh
   implicit none
 
   integer :: nx, ny, nz, i, j, k, ni, nj, nk, im, jm, km, nxm, nym, jj
-  real(8)::g, snu, time, rho, skt, beta_t, skc, stime_surf, alpha_surf
+  real(8)::g, snu, time, rho, skc, stime_surf, alpha_surf
   real(8)::dt, dz0, dz10, dz20
   real(8)::z0, sb, hs_ave, diam, ks, snm, kappa, xi1, al_ep
   real(8)::tmp0, con0
@@ -17,7 +17,7 @@ module common_hh
   integer::j_west, j_east, j_south, j_north
   integer::j_hinit, j_mindep
 
-  real(8)::tuk, etime0, surf_tension, etime_q, etime_h, etime, st_dens
+  real(8)::tuk, etime0, surf_tension, etime_q, etime, st_dens
   real(8)::smg_g, pi
   real(8)::hloop_err
   real(8)::qp, qp0, width_in, u_ave, cd0, cd2, h_up, h_dw, amp_alpha, qadjust
@@ -58,7 +58,7 @@ module common_geom
   real(8), dimension(:, :, :), allocatable::u38, v38, w38, p38, c38, sigma38, ob38, q38, snu_t38
   real(8), dimension(:, :, :), allocatable::vol_x, vol_y, vol_z
   ! real(8),dimension(:,:,:),allocatable::p38_cell,c38_cell
-  real(8), dimension(:), allocatable::time_q, qt_up, time_h, ht_up
+  real(8), dimension(:), allocatable::time_q, qt_up
 end module common_geom
 
 module common_hyd

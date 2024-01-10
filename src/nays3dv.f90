@@ -155,12 +155,10 @@ Program nays3dv
   ! j_west(i=0), j_east(i=nx), j_south(i=0), j_north(j=ny)
   ! 1==Closeed  2==Open  3=Periodic
   call cg_iric_read_integer(fid, 'j_west', j_west, ier)
-  ! call cg_iric_read_integer(fid,'jp_west',jp_west,ier)
   if (j_west == 3) then
     j_east = 3
   else
     call cg_iric_read_integer(fid, 'j_east', j_east, ier)
-    ! call cg_iric_read_integer(fid,'jp_east',jp_east,ier)
   end if
 
   call cg_iric_read_integer(fid, 'j_south', j_south, ier)
@@ -223,14 +221,6 @@ Program nays3dv
       call cg_iric_read_real(fid, 'hd_wl', hd_wl, ier) !周期
       call cg_iric_read_real(fid, 'hd_st', hd_st, ier) !開始時刻
       call cg_iric_read_real(fid, 'hd_ap', hd_ap, ier) !発達時間
-
-    else if (j_hdw == 4) then ! 下流端水位を時系列で与える
-      call cg_iric_read_functionalsize(fid, "h_hyd", n_hsize, ier) !流量の個数
-      allocate (time_h(n_qsize), ht_up(n_hsize))
-      call cg_iric_read_functionalwithname(fid, "h_hyd", "time_h", time_h, ier) !時間
-      call cg_iric_read_functionalwithname(fid, "h_hyd", "ht_up", ht_up, ier) !流量時系列
-      etime_h = time_h(n_hsize)
-
     end if
   end if
 
@@ -268,8 +258,6 @@ Program nays3dv
   if (j_west <= 2 .and. j_qin == 2) then
     etime = min(etime0, etime_q)
     etime0 = etime
-  else if (j_east == 2 .and. j_hdw == 4) then
-    etime = min(etime0, etime_h)
   end if
   call cg_iric_read_real(fid, 'dt', dt, ier)
   call cg_iric_read_real(fid, 'st_dens', st_dens, ier)
@@ -292,9 +280,7 @@ Program nays3dv
 
   ! 自由水面計算 繰り返し計算打ち切り誤差
   call cg_iric_read_real(fid, 'snu', snu, ier)
-  call cg_iric_read_real(fid, 'skt', skt, ier)
   call cg_iric_read_real(fid, 'skc', skc, ier)
-  call cg_iric_read_real(fid, 'beta_t', beta_t, ier)
   call cg_iric_read_real(fid, 'rho', rho, ier)
   call cg_iric_read_real(fid, 'surf_tension', surf_tension, ier)
   smg_g = -surf_tension/(rho*g)
@@ -614,14 +600,18 @@ Program nays3dv
         u00(nz + 1) = u00(nz)
       end if
     end if
-    !
-    ! 下流端の水位
-    !
-    if (j_east == 2) then
 
-      if (j_hdw == 1) then
+    !--------------------
+    ! 下流端の水位
+    !--------------------
+
+    if (j_east == 2) then        !下流端(東側)の境界条件が「開放」の場合
+
+      if (j_hdw == 1) then !下流端水位一定の場合
+
         h_dw = h_dw_const
-      else if (j_hdw == 3) then
+
+      else if (j_hdw == 3) then !下流端水位が「サインカーブによる振動」の場合
         if (time < hd_st) then
           h_dw = have_dw_ini
           hd_amp0 = 0.
@@ -634,9 +624,6 @@ Program nays3dv
           hd_amp0 = hd_amp*sin(2.*pi*(time - hd_st)/hd_wl)
           h_dw = have_dw_ini + hd_amp0*amp_alpha
         end if
-      else if (j_hdw == 4) then
-        write (*, *) 'not ready yet'
-        stop
       end if
     end if
 

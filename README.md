@@ -11,6 +11,9 @@ Nays3Dvは自由水面を持つ3次元流れ場とその中の密度変化を伴
 https://i-ric.org/yasu/Nays3dv_JP/index.html
 
 ## リリースノート
+### ver.1.7.24011001
+* 開発中のため使用できない機能の選択が可能だった問題を修正しました。
+
 ### ver.1.7.23021302
 * READMEに事例集のリンクを追加。
 ### ver.1.7.23021301
@@ -29,6 +32,8 @@ Check here for case studies.
 https://i-ric.org/yasu/Nays3dv/index.html
 
 ## Release notes
+ver.1.7.24011001
+* Addressed the issue where it was possible to select features that are not available due to being in development.
 ### ver.1.7.23021302
 * Add case study link to README.
 ### ver.1.7.23021301
