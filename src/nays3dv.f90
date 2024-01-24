@@ -477,6 +477,9 @@ Program nays3dv
   do while (time < etime)
     icount = icount + 1
 
+    ! 途中で計算結果を出力する処理
+    call cg_iric_check_update(fid, ier)
+
     if (j_dens0 == 1 .and. time > st_dens) then
       j_dens = 1
     else
@@ -502,6 +505,7 @@ Program nays3dv
       end do
     end do
 
+    ! キャンセルが押されたときの処理
     call iric_check_cancel(istatus)
     if (istatus == 1) then
       write (*, *) "Solver is stopped because the STOP button was clicked."
